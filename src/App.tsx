@@ -1,12 +1,13 @@
-import { ChakraProvider, Text } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { ColorMode } from './components';
+import { Router } from './router';
 import { theme } from './theme';
 
 const App = () => {
   return (
     <ChakraProvider theme={theme} resetCSS>
-      <div className="App">
-        <Text casing="capitalize">Hi</Text>
-      </div>
+      <ColorMode />
+      <Router />
     </ChakraProvider>
   );
 };
