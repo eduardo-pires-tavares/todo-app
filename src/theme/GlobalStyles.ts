@@ -7,7 +7,9 @@ export const styles = {
       bg: mode('whiteAlpha.900', 'gray.800')(props),
       letterSpacing: '.02em',
       lineHeight: '1.2rem',
-      fontSize: '1rem'
+      fontSize: '1rem',
+      height: '100vh',
+      width: '100%'
     }
   })
 };

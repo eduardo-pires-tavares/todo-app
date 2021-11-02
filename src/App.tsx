@@ -6,7 +6,6 @@ import { theme } from './theme';
 const App = () => {
   return (
     <ChakraProvider theme={theme} resetCSS>
-      <ColorMode />
       <Router />
     </ChakraProvider>
   );
