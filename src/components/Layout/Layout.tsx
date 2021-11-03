@@ -8,7 +8,7 @@ type Props = {
 export const Layout = ({ children }: Props) => {
   return (
     <>
-      <Grid columns={2} templateColumns="15% 85%" h="100vh">
+      <Grid columns={2} templateColumns="220px 1fr" h="100vh">
         <GridItem>
           <Navigation />
         </GridItem>
