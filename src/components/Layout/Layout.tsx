@@ -1,5 +1,5 @@
 import { GridItem, Grid, Container } from '@chakra-ui/react';
-import { Navigation } from '..';
+import { SideBar } from '..';
 
 type Props = {
   children: JSX.Element;
@@ -8,10 +8,8 @@ type Props = {
 export const Layout = ({ children }: Props) => {
   return (
     <>
-      <Grid columns={2} templateColumns="220px 1fr" h="100vh">
-        <GridItem>
-          <Navigation />
-        </GridItem>
+      <Grid columns={2} templateColumns="220px 1fr">
+        <GridItem h="100vh">{<SideBar />}</GridItem>
         <GridItem>
           <Container maxW={'container.xl'} h={'100vh'} p={4}>
             {children}

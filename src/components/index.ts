@@ -1,3 +1,3 @@
 export * from './ColorMode/ColorMode';
-export * from './Navigation/Navigation';
+export * from './Navigation/SideBar';
 export * from './Layout/Layout';
