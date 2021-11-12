@@ -1,4 +1,4 @@
-import { GridItem, Grid } from '@chakra-ui/react';
+import { GridItem, Grid, Container } from '@chakra-ui/react';
 import { Navigation } from '..';
 
 type Props = {
@@ -12,7 +12,11 @@ export const Layout = ({ children }: Props) => {
         <GridItem>
           <Navigation />
         </GridItem>
-        <GridItem>{children}</GridItem>
+        <GridItem>
+          <Container maxW={'container.xl'} h={'100vh'} p={4}>
+            {children}
+          </Container>
+        </GridItem>
       </Grid>
     </>
   );
