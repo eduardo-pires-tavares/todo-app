@@ -22,12 +22,12 @@ export const AppRoutes: AppRoute[] = [
     icon: BsCheck2Square
   },
   {
-    name: 'Login',
-    path: '/Login',
+    name: 'Sign In',
+    path: '/SignIn',
     icon: AiOutlineLogin
   },
   {
-    name: 'SignUp',
+    name: 'Sign Up',
     path: '/SignUp',
     icon: AiOutlineUser
   }

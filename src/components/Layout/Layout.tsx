@@ -8,12 +8,10 @@ type Props = {
 export const Layout = ({ children }: Props) => {
   return (
     <>
-      <Grid templateColumns="min-content 1fr" templateRows="1fr 1fr">
-        <GridItem colStart={1} colEnd={2} rowStart={1} rowEnd={3}>
-          {<SideBar />}
-        </GridItem>
+      <Grid templateColumns={{ base: '1fr', md: '200px 1fr' }}>
+        <GridItem>{<SideBar />}</GridItem>
         <GridItem>
-          <Container maxW={'container.xl'} h={'100vh'} p={4}>
+          <Container maxW="" h={'100vh'} p={4}>
             {children}
           </Container>
         </GridItem>
