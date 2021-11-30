@@ -1,4 +1,4 @@
-import { FlexProps, Flex, Icon, Box } from '@chakra-ui/react';
+import { FlexProps, Flex, Icon } from '@chakra-ui/react';
 import { ReactText } from 'react';
 import { IconType } from 'react-icons';
 import { Link } from 'react-router-dom';

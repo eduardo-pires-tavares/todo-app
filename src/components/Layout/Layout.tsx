@@ -10,11 +10,7 @@ export const Layout = ({ children }: Props) => {
     <>
       <Grid templateColumns={{ base: '1fr', md: '200px 1fr' }}>
         <GridItem>{<SideBar />}</GridItem>
-        <GridItem>
-          <Container maxW="" h={'100vh'} p={4}>
-            {children}
-          </Container>
-        </GridItem>
+        <GridItem h={'100vh'}>{children}</GridItem>
       </Grid>
     </>
   );

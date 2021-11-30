@@ -3,15 +3,13 @@ import {
   Drawer,
   DrawerContent,
   useColorModeValue,
-  useDisclosure,
-  useMediaQuery
+  useDisclosure
 } from '@chakra-ui/react';
 import { MobileNav } from './MobileNav';
 import { SideBarContent } from './SideBarContent';
 
 export const SideBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLargerThan480] = useMediaQuery('(min-width: 480px)');
 
   return (
     <Box

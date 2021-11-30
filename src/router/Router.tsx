@@ -4,31 +4,38 @@ import { Tasks, Home } from 'src/pages';
 import { AiOutlineLogin, AiOutlineUser } from 'react-icons/ai';
 import { BsHouse, BsCheck2Square } from 'react-icons/bs';
 
+export enum RoutesPath {
+  'Home' = '/',
+  'Tasks' = '/Tasks',
+  'SignIn' = '/SignIn',
+  'SignUp' = '/SignUp'
+}
+
 type AppRoute = {
   name: string;
-  path: string;
+  path: RoutesPath;
   icon: IconType;
 };
 
 export const AppRoutes: AppRoute[] = [
   {
     name: 'Home',
-    path: '/',
+    path: RoutesPath.Home,
     icon: BsHouse
   },
   {
     name: 'Tasks',
-    path: '/Tasks',
+    path: RoutesPath.Tasks,
     icon: BsCheck2Square
   },
   {
     name: 'Sign In',
-    path: '/SignIn',
+    path: RoutesPath.SignIn,
     icon: AiOutlineLogin
   },
   {
     name: 'Sign Up',
-    path: '/SignUp',
+    path: RoutesPath.SignUp,
     icon: AiOutlineUser
   }
 ];
