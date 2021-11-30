@@ -27,7 +27,7 @@ export const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       <Heading color={'yellow.200'} fontSize={'4xl'}>
         Taskly.
       </Heading>
-      <Flex>
+      <Flex alignItems="center">
         <ColorMode
           _hover={{
             bg: 'yellow.200',

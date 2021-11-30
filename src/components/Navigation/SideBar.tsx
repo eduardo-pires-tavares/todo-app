@@ -3,31 +3,32 @@ import {
   Drawer,
   DrawerContent,
   useColorModeValue,
-  useDisclosure
+  useDisclosure,
+  useMediaQuery
 } from '@chakra-ui/react';
 import { MobileNav } from './MobileNav';
 import { SideBarContent } from './SideBarContent';
 
 export const SideBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  console.log({ isOpen, onOpen, onClose });
+  const [isLargerThan480] = useMediaQuery('(min-width: 480px)');
 
   return (
     <Box
-      minH="100vh"
+      minH={{ base: 'auto', md: '100vh' }}
       bg={useColorModeValue('gray.800', 'gray.900')}
       as="nav"
-      borderRight="1px"
+      borderRight={{ base: 'unset', md: '1px' }}
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
     >
       <SideBarContent
-        onClose={() => onClose}
+        onClose={onClose}
         display={{ base: 'none', md: 'block' }}
       />
+
       <Drawer
         autoFocus={false}
-        isOpen={false}
+        isOpen={isOpen}
         placement="left"
         onClose={onClose}
         returnFocusOnClose={false}
@@ -38,7 +39,8 @@ export const SideBar = () => {
           <SideBarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={() => onOpen} />
+
+      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
     </Box>
   );
 };

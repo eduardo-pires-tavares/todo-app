@@ -50,11 +50,12 @@ export const SideBarContent = ({ onClose, ...rest }: SidebarProps) => {
       </Flex>
       {AppRoutes.map(({ icon, name, path }) => {
         return (
-          <NavItem key={name} path={path} icon={icon}>
+          <NavItem onClick={onClose} key={name} path={path} icon={icon}>
             {name}
           </NavItem>
         );
       })}
+      <Flex justifyContent="center"></Flex>
     </Box>
   );
 };
