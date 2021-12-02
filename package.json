@@ -32,7 +32,8 @@
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
     "lint-fix": "eslint src --quiet --fix",
     "prettier:fix": "prettier --write",
-    "prettier:check": "prettier --check"
+    "prettier:check": "prettier --check",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [

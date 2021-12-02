@@ -1,4 +1,4 @@
-import { GridItem, Grid, Container } from '@chakra-ui/react';
+import { GridItem, Grid, useColorModeValue } from '@chakra-ui/react';
 import { SideBar } from '..';
 
 type Props = {
@@ -10,7 +10,9 @@ export const Layout = ({ children }: Props) => {
     <>
       <Grid templateColumns={{ base: '1fr', md: '200px 1fr' }}>
         <GridItem>{<SideBar />}</GridItem>
-        <GridItem h={'100vh'}>{children}</GridItem>
+        <GridItem bg={useColorModeValue('gray.200', 'gray.700')} h={'100vh'}>
+          {children}
+        </GridItem>
       </Grid>
     </>
   );

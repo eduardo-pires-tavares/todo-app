@@ -11,7 +11,12 @@ export const colours = {
     800: '#744210',
     900: '#5F370E'
   },
-  error: '#FF4242',
-  success: '#ECC94B',
+  error: {
+    100: '#FF4242'
+  },
+  success: {
+    100: '#ECC94B'
+  },
+
   warning: '#32C269'
 };

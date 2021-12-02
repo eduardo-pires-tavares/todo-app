@@ -1,3 +1,4 @@
+import { AddIcon } from '@chakra-ui/icons';
 import {
   Heading,
   Text,
@@ -7,19 +8,25 @@ import {
   VStack,
   Flex
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
-import { Illustration } from 'src/components';
-import { RoutesPath } from 'src/router';
+import { useEffect, useState } from 'react';
+import { NewTodoItem } from 'src/components/TodoItem/NewTodoItem';
 
 export const Home = () => {
+  const [showNewTodo, setShowNewTodo] = useState<boolean | null>(false);
+  const [isTodoAdded, setIsTodoAdded] = useState<boolean | null>(false);
+
+  useEffect(() => {
+    if (isTodoAdded && showNewTodo) {
+      setIsTodoAdded(false);
+      setShowNewTodo(false);
+    }
+  }, [isTodoAdded, showNewTodo]);
+
   return (
-    <Flex
-      w="100vw"
-      bg={useColorModeValue('whiteAlpha.900', 'gray.800')}
-      justifyContent="center"
-    >
+    <Flex w="full" justifyContent="center" align="center">
       <VStack
-        py={{ base: 4, md: 12 }}
+        py={{ base: 4, md: 6 }}
+        px={{ base: 4 }}
         spacing={{ base: 8, md: 10 }}
         textAlign="center"
         align="center"
@@ -51,26 +58,22 @@ export const Home = () => {
         </Text>
         <HStack spacing={6}>
           <Button
+            fontFamily="Verdana"
             rounded={'full'}
+            leftIcon={<AddIcon w="3" mt="0.5" mr="1" h="3" />}
+            variant="solid"
             px={6}
-            color={useColorModeValue('gray.700', 'whiteAlpha.900')}
+            color="gray.700"
             bg={'yellow.400'}
             _hover={{ bg: 'yellow.500' }}
+            onClick={() => setShowNewTodo(true)}
           >
-            Get started
+            Add Task
           </Button>
-          <Link to={RoutesPath.SignUp}>
-            <Button rounded={'full'} px={6} fontWeight="600">
-              Sign Up
-            </Button>
-          </Link>
         </HStack>
-        <Flex w={'full'} justifyContent="center" align="center">
-          <Illustration
-            height={{ sm: '24rem', lg: '28rem' }}
-            mt={{ base: 12, sm: 16 }}
-          />
-        </Flex>
+        {showNewTodo && !isTodoAdded && (
+          <NewTodoItem setIsTodoAdded={setIsTodoAdded} />
+        )}
       </VStack>
     </Flex>
   );
