@@ -1,5 +1,5 @@
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { Box, Textarea, Flex, Icon, HStack } from '@chakra-ui/react';
+import { Box, Textarea, Flex, HStack } from '@chakra-ui/react';
 import { useRef, useState, useEffect, ChangeEvent } from 'react';
 
 interface Props {
