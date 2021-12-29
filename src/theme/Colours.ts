@@ -17,6 +17,5 @@ export const colours = {
   success: {
     100: '#ECC94B'
   },
-
   warning: '#32C269'
 };

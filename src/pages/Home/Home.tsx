@@ -10,10 +10,9 @@ import {
   ScaleFade
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { DragAndDropGrid } from 'src/components/DragAndDrop/DragAndDropGrid';
+import { DragAndDropGrid } from 'src/components/DragAndDrop/DragAndDrop';
 import { NewTodoItem } from 'src/components/TodoItem/NewTodoItem';
-import { TodoItem } from 'src/components/TodoItem/TodoItem';
-import { MockTodos } from 'src/data/MockData';
+import { MockColumns } from 'src/data/MockData';
 
 export const Home = () => {
   const [showNewTodo, setShowNewTodo] = useState<boolean>(false);
@@ -55,7 +54,7 @@ export const Home = () => {
             lineHeight="200%"
           >
             Never miss a task. Keep track of your objectives and receive smart
-            reminders in appropriate times. Read your{' '}
+            reminders in appropriate times. Check your{' '}
             <Text fontWeight="600" as="span" color="yellow.400">
               Taskly
             </Text>{' '}
@@ -77,15 +76,15 @@ export const Home = () => {
             </Button>
           </HStack>
           {showNewTodo && !isTodoAdded && (
-            <ScaleFade initialScale={0.5} in={showNewTodo}>
+            <ScaleFade initialScale={0.1} in={showNewTodo}>
               <NewTodoItem setIsTodoAdded={setIsTodoAdded} />
             </ScaleFade>
           )}
         </VStack>
       </Flex>
-      {MockTodos.map(({ id, ...args }) => {
-        return <TodoItem key={id} id={id} {...args} />;
-      })}
+      <Flex w="full" justifyContent="center">
+        <DragAndDropGrid data={MockColumns} />
+      </Flex>
     </>
   );
 };

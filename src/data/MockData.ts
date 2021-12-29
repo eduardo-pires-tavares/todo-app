@@ -1,29 +1,22 @@
-import { ITodoItem } from 'src/types/Todo';
+import { IColumn, IDragDropColumns } from 'src/types/types';
 
-export const MockTodos: ITodoItem[] = [
-  {
-    completed: false,
-    id: '1',
-    text: 'test'
-  },
-  {
-    completed: false,
-    id: '2',
-    text: 'test2'
-  },
-  {
-    completed: false,
-    id: '3',
-    text: 'test3'
-  },
-  {
-    completed: false,
-    id: '4',
-    text: 'test4'
-  },
-  {
-    completed: false,
-    id: '5',
-    text: 'test5'
-  }
-];
+const MockTodoColumn: IColumn = {
+  id: 'todo',
+  title: 'Todo',
+  tasks: [{ id: '1', text: 'Todo' }]
+};
+
+const MockDoneColumn: IColumn = {
+  id: 'done',
+  title: 'Done',
+  tasks: [
+    { id: '3', text: 'Done' },
+    { id: '5', text: 'Done' },
+    { id: '5', text: 'Done' }
+  ]
+};
+
+export const MockColumns: IDragDropColumns = {
+  todo: MockTodoColumn,
+  done: MockDoneColumn
+};

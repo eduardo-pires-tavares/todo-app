@@ -10,7 +10,7 @@ export const Layout = ({ children }: Props) => {
     <>
       <Grid templateColumns={{ base: '1fr', md: '200px 1fr' }}>
         <GridItem>{<SideBar />}</GridItem>
-        <GridItem bg={useColorModeValue('gray.200', 'gray.700')} h={'full'}>
+        <GridItem bg={useColorModeValue('gray.200', 'gray.700')}>
           {children}
         </GridItem>
       </Grid>
