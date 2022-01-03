@@ -1,4 +1,5 @@
-import { IColumn, IDragDropColumns } from 'src/types/types';
+import { IColumn } from 'src/types/types';
+import { v4 as uuidv4, v4 } from 'uuid';
 
 const MockTodoColumn: IColumn = {
   id: 'todo',
@@ -10,13 +11,10 @@ const MockDoneColumn: IColumn = {
   id: 'done',
   title: 'Done',
   tasks: [
-    { id: '3', text: 'Done' },
-    { id: '5', text: 'Done' },
-    { id: '5', text: 'Done' }
+    { id: '3', text: 'Done1' },
+    { id: '4', text: 'Done2' },
+    { id: '5', text: 'Done3' }
   ]
 };
 
-export const MockColumns: IDragDropColumns = {
-  todo: MockTodoColumn,
-  done: MockDoneColumn
-};
+export const MockColumns: IColumn[] = [MockTodoColumn, MockDoneColumn];

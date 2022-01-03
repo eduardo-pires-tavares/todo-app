@@ -12,8 +12,3 @@ export interface IColumn {
   id: string;
   tasks: ITodoItem[];
 }
-
-export interface IDragDropColumns {
-  todo: IColumn;
-  done: IColumn;
-}

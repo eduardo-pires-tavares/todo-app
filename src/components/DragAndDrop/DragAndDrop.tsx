@@ -1,16 +1,16 @@
 import { Box, Flex, useColorMode } from '@chakra-ui/react';
 import { useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { IDragDropColumns } from 'src/types/types';
+import { IColumn } from 'src/types/types';
 import { DragAndDropColumn } from './DragAndDropColumn';
 import { onDragEnd } from './DragAndDropUtils';
 
 interface DragAndDropGridProps {
-  data: IDragDropColumns;
+  data: IColumn[];
 }
 
 export const DragAndDropGrid = ({ data }: DragAndDropGridProps) => {
-  const [columns, setColumns] = useState<IDragDropColumns>(data);
+  const [columns, setColumns] = useState<IColumn[]>(data);
   const { colorMode } = useColorMode();
 
   return (
@@ -24,7 +24,7 @@ export const DragAndDropGrid = ({ data }: DragAndDropGridProps) => {
           alignItems="flex-start"
           flexWrap="wrap"
         >
-          {Object.values(columns).map(({ title, id, tasks }, index) => (
+          {columns.map(({ title, id, tasks }, index) => (
             <DragAndDropColumn
               key={index}
               id={id}

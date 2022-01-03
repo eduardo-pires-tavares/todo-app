@@ -12,19 +12,18 @@ type Props = IColumn & IColorMode;
 
 export const DragAndDropColumn = ({ tasks, id, title, colorMode }: Props) => {
   return (
-    <Droppable droppableId={id}>
-      {(provided) => (
-        <VStack
-          ref={provided.innerRef}
-          borderRadius="lg"
-          bg={colorMode === 'dark' ? 'gray.600' : 'gray.300'}
-          p="4"
-          pb="6"
-          m="4"
-          {...provided.droppableProps}
-        >
-          <Heading pb="4">{title}</Heading>
+    <VStack
+      borderRadius="lg"
+      bg={colorMode === 'dark' ? 'gray.600' : 'gray.300'}
+      p="4"
+      pb="6"
+      m="4"
+    >
+      <Heading pb="4">{title}</Heading>
+      <Droppable droppableId={id}>
+        {(provided) => (
           <VStack
+            minW="250px"
             spacing="4"
             {...provided.droppableProps}
             ref={provided.innerRef}
@@ -34,8 +33,8 @@ export const DragAndDropColumn = ({ tasks, id, title, colorMode }: Props) => {
             ))}
             {provided.placeholder}
           </VStack>
-        </VStack>
-      )}
-    </Droppable>
+        )}
+      </Droppable>
+    </VStack>
   );
 };

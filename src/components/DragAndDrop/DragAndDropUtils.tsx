@@ -1,8 +1,8 @@
 import { DraggableLocation, DropResult } from 'react-beautiful-dnd';
-import { IColumn, IDragDropColumns } from 'src/types/types';
+import { IColumn } from 'src/types/types';
 
-const reorder = (columns: IColumn, startIndex: number, endIndex: number) => {
-  const result = Array.from(columns.tasks);
+const reorder = (column: IColumn, startIndex: number, endIndex: number) => {
+  const result = Array.from(column.tasks);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
 
@@ -26,50 +26,55 @@ const move = (
   result[dropSource.droppableId] = sourceClone;
   result[dropDestination.droppableId] = destinationClone;
 
+  console.log(result);
+
   return result;
 };
 
 export const onDragEnd = (
   { source, destination }: DropResult,
-  columns: IDragDropColumns,
-  setColumns: React.Dispatch<React.SetStateAction<IDragDropColumns>>
+  columns: IColumn[],
+  setColumns: React.Dispatch<React.SetStateAction<IColumn[]>>
 ) => {
   //Valid Destination
   if (!source || !destination) {
     return;
   }
 
+  const sourceId = source.droppableId;
+  const destId = destination.droppableId;
+
   //Item ins't  moving
-  if (
-    source.droppableId === destination.droppableId ||
-    destination.index === source.index
-  ) {
+  if (destination.index === source.index && sourceId === destId) {
     return;
   }
 
   // Set start and end variables
-  const startInd = +source.droppableId;
-  const endInd = +destination.droppableId;
 
   // If start is the same as end, we're in the same column
-  if (startInd === endInd) {
-    const items = reorder(columns[startInd], source.index, destination.index);
-    columns[startInd].tasks = items;
+  if (sourceId === destId) {
+    const col = columns.find(({ id }) => id === sourceId)!;
+    const items = reorder(col, source.index, destination.index);
+    const newCols = [...columns];
 
-    setColumns(columns);
+    console.log(columns);
+
+    newCols.find(({ id }) => id === sourceId)!.tasks = items;
+
+    setColumns(newCols);
   } else {
     // If start is different from end, we need to update multiple columns
 
-    const result = move(
-      columns[startInd],
-      columns[endInd],
-      source,
-      destination
-    );
+    const sourceCol = columns.find(({ id }) => id === sourceId)!;
+    const destCol = columns.find(({ id }) => id === destId)!;
 
-    columns[startInd] = result[startInd];
-    columns[endInd] = result[endInd];
+    const result = move(sourceCol, destCol, source, destination);
 
-    setColumns(columns);
+    const newCols = [...columns];
+
+    newCols.find(({ id }) => id === sourceId)!.tasks = result[sourceId];
+    newCols.find(({ id }) => id === destId)!.tasks = result[destId];
+
+    setColumns(newCols);
   }
 };
