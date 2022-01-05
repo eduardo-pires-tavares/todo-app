@@ -26,8 +26,6 @@ const move = (
   result[dropSource.droppableId] = sourceClone;
   result[dropDestination.droppableId] = destinationClone;
 
-  console.log(result);
-
   return result;
 };
 

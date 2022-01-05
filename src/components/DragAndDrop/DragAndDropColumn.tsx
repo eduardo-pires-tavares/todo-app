@@ -1,4 +1,4 @@
-import { ColorMode, Heading, VStack } from '@chakra-ui/react';
+import { ColorMode, Flex, Heading, VStack } from '@chakra-ui/react';
 import { Droppable } from 'react-beautiful-dnd';
 import { IColumn } from 'src/types/types';
 import { DragAndDropItem } from './DragAndDropItem';
@@ -22,9 +22,9 @@ export const DragAndDropColumn = ({ tasks, id, title, colorMode }: Props) => {
       <Heading pb="4">{title}</Heading>
       <Droppable droppableId={id}>
         {(provided) => (
-          <VStack
+          <Flex
+            direction="column"
             minW="250px"
-            spacing="4"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
@@ -32,7 +32,7 @@ export const DragAndDropColumn = ({ tasks, id, title, colorMode }: Props) => {
               <DragAndDropItem key={uuidv4()} item={item} index={index} />
             ))}
             {provided.placeholder}
-          </VStack>
+          </Flex>
         )}
       </Droppable>
     </VStack>

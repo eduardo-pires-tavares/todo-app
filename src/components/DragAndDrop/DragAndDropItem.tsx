@@ -13,7 +13,7 @@ export const DragAndDropItem = ({ index, item }: Props) => {
   return (
     <Draggable draggableId={item.id} key={item.id} index={index}>
       {(provided) => (
-        <Box ref={provided.innerRef} {...provided.draggableProps}>
+        <Box my="0.5rem" ref={provided.innerRef} {...provided.draggableProps}>
           <TodoItem {...provided.dragHandleProps!} item={item} key={v4()} />
         </Box>
       )}
